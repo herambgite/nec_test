@@ -16,11 +16,11 @@ if(!empty($_POST)) {
 
         $created = $modified = date("Y-m-d H:i:s");
 
-        $query = "SELECT id from users where email = :email and password = :pass LIMIT 1";
+        $query = "SELECT id from users where email = :email LIMIT 1";
 
         $stmt = $db->prepare($query);
         $stmt->bindParam(":email",$email);
-        $stmt->bindParam(":pass",$pass);
+        // $stmt->bindParam(":pass",$pass);
         try{
             $stmt->execute();
         }
@@ -62,7 +62,7 @@ if(!empty($_POST)) {
             $msg = "Sign Up Completed";
         }
         else {
-            $msg = "User with submitted credentials already exists";
+            $msg = "User with submitted email already exists";
         }
 
     }
