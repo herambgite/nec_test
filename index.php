@@ -1,8 +1,8 @@
 <?php
 include_once "db_con.php";
 
+$msg = '';
 if(!empty($_POST)) {
-    $msg = '';
     $login_success = 0;
     if(!empty($_POST['name']) && !empty($_POST['pass'])) {
 
@@ -23,14 +23,11 @@ if(!empty($_POST)) {
 
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-        foreach ($result as $row) {
-            
-            if(empty($row['id'])) {
-                $msg = 'Username/Password details are incorrect';
-            }
-            else {
-                $login_success = 1;
-            }
+        if(empty($result)) {
+            $msg = 'Username/Password details are incorrect';
+        }
+        else {
+            $login_success = 1;
         }
     }
 
@@ -84,7 +81,7 @@ echo "</pre>";
                             
                             <div class="form-group form-button">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
-                                <?php echo $msg; ?>
+                                <?php echo "<br>".$msg; ?>
                             </div>
                         </form>
         
@@ -94,9 +91,5 @@ echo "</pre>";
         </section>
 
     </div>
-
-    <!-- JS -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="js/main.js"></script>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</body
 </html>

@@ -111,8 +111,8 @@ if(!empty($_POST)) {
                             </div>
                             
                             <div class="form-group form-button">
-                                <?php echo $msg; ?>
                                 <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                                <?php echo "<br>".$msg; ?>
                             </div>
                         </form>
                     </div>
@@ -125,9 +125,5 @@ if(!empty($_POST)) {
         </section>
 
     </div>
-
-    <!-- JS -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="js/main.js"></script>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</body>
 </html>
