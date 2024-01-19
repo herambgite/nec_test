@@ -1,16 +1,14 @@
 <?php
 include_once "db_con.php";
-echo "<pre>";
+
 if(!empty($_POST)) {
     $msg = '';
     $login_success = 0;
     if(!empty($_POST['name']) && !empty($_POST['pass'])) {
-        print_r($_POST);
 
         $name = $_POST['name'];
         $pass = $_POST['pass'];
-        print_r($name);
-        print_r($pass);
+        
         $query = "SELECT id from users where email = :email and password = :pass LIMIT 1";
 
         $stmt = $db->prepare($query);
@@ -26,7 +24,7 @@ if(!empty($_POST)) {
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
         foreach ($result as $row) {
-            print_r($row);
+            
             if(empty($row['id'])) {
                 $msg = 'Username/Password details are incorrect';
             }
@@ -34,8 +32,6 @@ if(!empty($_POST)) {
                 $login_success = 1;
             }
         }
-
-        // print_r($result);
     }
 
     if($login_success == 1) {
@@ -88,6 +84,7 @@ echo "</pre>";
                             
                             <div class="form-group form-button">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                                <?php echo $msg; ?>
                             </div>
                         </form>
         

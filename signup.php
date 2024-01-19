@@ -14,15 +14,6 @@ if(!empty($_POST)) {
         $pass = $_POST['pass'];
         $re_pass = $_POST['re_pass'];
 
-        // print_r($name);
-        // echo "<br>";
-        // print_r($email);
-        // echo "<br>";
-        // print_r($pass);
-        // echo "<br>";
-        // print_r($re_pass);
-        // echo "<br>";
-
         $created = $modified = date("Y-m-d H:i:s");
 
         $query = "SELECT id from users where email = :email and password = :pass LIMIT 1";
@@ -39,9 +30,7 @@ if(!empty($_POST)) {
        
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // print_r($result);
-
-        if(empty($result)) {
+        if(empty($result)) {            
             $create_record = "yes";
         }
         else {
@@ -66,8 +55,7 @@ if(!empty($_POST)) {
             }
             catch (PDOException $e) {
                 echo "Query failed: " . $e->getMessage();
-            }
-            
+            }            
     
             $insertId = $db->lastInsertId();
 

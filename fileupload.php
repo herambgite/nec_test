@@ -7,7 +7,6 @@ if (!empty($_FILES['user_file']['name']) && ($_FILES['user_file']['name']!="")) 
 
     if(!in_array($file_type, $allowed)) {
         $msg = 'Only jpg, gif, png, csv, and pdf files are allowed.';
-        // $error = 'yes';
     }
     
     $target_dir = "uploads/";
